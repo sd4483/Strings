@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
-
+use App\Models\Category;
 
 class WelcomeController extends Controller
 {
@@ -12,6 +12,11 @@ class WelcomeController extends Controller
     {
         $blogs = Blog::with('user', 'categories')->get();
 
-        return view('welcome', compact('blogs'));
+        $topCategories = Category::withCount('blogs')
+            ->orderBy('blogs_count', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('welcome', compact('blogs', 'topCategories'));
     }
 }
