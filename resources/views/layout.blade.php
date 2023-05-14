@@ -28,7 +28,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <div><a href="{{ route('welcome') }}" class="text-lg font-bold">{Strings}</div>
                 @if (Auth::check())
-                    <div class="text-center text-lg uppercase">{{ Auth::user()->name }}</div>
+                    <div class="text-center text-lg uppercase"><a href="/dashboard">{{ Auth::user()->name }}</div>
                         <div class="flex">
                             <a href="{{ route('profile.edit') }}" class="text-white no-underline">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">

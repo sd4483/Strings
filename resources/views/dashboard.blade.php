@@ -16,25 +16,29 @@
                         <!-- Number of blogs and comments -->
                         <div class="bg-gray-100 p-4 rounded-lg">
                             <h3 class="text-lg font-semibold mb-2">Your Statistics</h3>
-                            <p>Blogs published: {{ Auth::user()->blogs()->count() }}</p>
+                            <p class="mb-2">Blogs published: {{ Auth::user()->blogs()->count() }}</p>
                             <p>Comments made: {{ Auth::user()->comments()->count() }}</p>
                         </div>
 
                         <!-- List of blogs and comments -->
                         <div class="bg-gray-100 p-4 rounded-lg">
                             <h3 class="text-lg font-semibold mb-2">Your Blogs</h3>
-                            <ul>
-                                @foreach(Auth::user()->blogs as $blog)
-                                    <li>{{ $blog->title }}</li>
-                                @endforeach
-                            </ul>
+                            <div class="pl-5">
+                                <ul class="list-disc">
+                                    @foreach(Auth::user()->blogs as $blog)
+                                        <li class="mb-4 hover:underline"><a href="{{ route('blogs.show', $blog->slug) }}">{{ $blog->title }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
 
                             <h3 class="text-lg font-semibold mb-2 mt-4">Your Comments</h3>
-                            <ul>
-                                @foreach(Auth::user()->comments as $comment)
-                                    <li>{{ $comment->body }} (Likes: {{ $comment->likes }} , Dislikes: {{ $comment->dislikes }})</li>
-                                @endforeach
-                            </ul>
+                            <div class="pl-5">
+                                <ul class="list-disc">
+                                    @foreach(Auth::user()->comments as $comment)
+                                        <li class="mb-4">{{ $comment->content }} (Likes: {{ $comment->likes }} , Dislikes: {{ $comment->dislikes }})</li> 
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
