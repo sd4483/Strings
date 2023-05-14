@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::where('published', true)->get();
+        $blogs = Blog::where('published', true)->paginate(9);
         return view('welcome', compact('blogs'));
     }
 

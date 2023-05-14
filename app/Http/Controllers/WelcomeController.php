@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::with('user', 'categories')->get();
+        $blogs = Blog::with('user', 'categories')->paginate(9);
 
         $topCategories = Category::withCount('blogs')
             ->orderBy('blogs_count', 'desc')

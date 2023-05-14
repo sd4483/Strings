@@ -34,6 +34,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

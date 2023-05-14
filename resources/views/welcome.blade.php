@@ -22,6 +22,8 @@
                         </div>
                     </div>
                 @endforeach
+                <!-- Render the pagination links -->
+                {{ $blogs->links() }}
             @else
                 <p>No blogs found.</p>
             @endif
